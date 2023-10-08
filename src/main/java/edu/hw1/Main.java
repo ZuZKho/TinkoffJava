@@ -3,12 +3,14 @@ package edu.hw1;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
 import java.util.logging.Logger;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
-public class Main {
+class Main {
+
+    private Main() {
+    }
 
     static public void main(String[] args) {
         task0();
@@ -25,33 +27,32 @@ public class Main {
         if (parts.length > 2) {
             return -1;
         }
-        int mm, ss;
+        int mm;
+        int ss;
 
         try {
             mm = Integer.parseInt(parts[0]);
-        } catch (NumberFormatException e) {
-            return -1;
-        }
-
-        try {
             ss = Integer.parseInt(parts[1]);
         } catch (NumberFormatException e) {
             return -1;
         }
 
-        if (ss < 0 || mm < 0 || ss > 59) {
+        final int secondsInMinute = 60;
+        if (ss < 0 || mm < 0 || ss >= secondsInMinute) {
             return -1;
         }
 
-        return mm * 60 + ss;
+        return mm * secondsInMinute + ss;
     }
 
-    static public int countDigits(int number) {
+    static public int countDigits(int numberInput) {
         int cnt = 1;
+        int number = numberInput;
 
-        while (number >= 10) {
+        final int BASE = 10;
+        while (number >= BASE) {
             cnt++;
-            number /= 10;
+            number /= BASE;
         }
 
         return cnt;
@@ -107,12 +108,15 @@ public class Main {
     }
 
     static public int countK(int n) {
-        if (n == 6174) {
+        final int kaprekarNumber = 6174;
+        final int nLen = 4;
+
+        if (n == kaprekarNumber) {
             return 0;
         }
 
         String str = String.valueOf(n);
-        while (str.length() < 4) {
+        while (str.length() < nLen) {
             str = "0".concat(str);
         }
 
@@ -121,10 +125,10 @@ public class Main {
 
         int first = Integer.parseInt(String.valueOf(strChar));
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < nLen / 2; i++) {
             char tmp = strChar[i];
-            strChar[i] = strChar[3 - i];
-            strChar[3 - i] = tmp;
+            strChar[i] = strChar[nLen - i - 1];
+            strChar[nLen - i - 1] = tmp;
         }
 
         int second = Integer.parseInt(String.valueOf(strChar));
@@ -138,9 +142,13 @@ public class Main {
         return countK(first - second) + 1;
     }
 
-    static public int rotateRight(int n, int shift) {
+    static public int rotateRight(int nInput, int shiftInput) {
+        final int intBits = 32;
+        int n = nInput;
+        int shift = shiftInput;
+
         int bits = 0;
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < intBits; i++) {
             if ((n & (1 << i)) != 0) {
                 bits = i;
             }
@@ -161,9 +169,13 @@ public class Main {
         return n;
     }
 
-    static public int rotateLeft(int n, int shift) {
+    static public int rotateLeft(int nInput, int shiftInput) {
+        final int intBits = 32;
+        int n = nInput;
+        int shift = shiftInput;
+
         int bits = 0;
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < intBits; i++) {
             if ((n & (1 << i)) != 0) {
                 bits = i;
             }
@@ -186,16 +198,20 @@ public class Main {
     }
 
     static public boolean knightBoardCapture(int[][] arr) {
-        int[] xes = new int[] {1, -1, 2, -2, 1, -1, 2, -2};
-        int[] yes = new int[] {2, 2, 1, 1, -2, -2, -1, -1};
+        final int step2 = 2;
+        final int step1 = 1;
+        final int sideLen = 8;
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                for (int k = 0; k < 8; k++) {
+        int[] xes = new int[] {step1, -step1, step2, -step2, step1, -step1, step2, -step2};
+        int[] yes = new int[] {step2, step2, step1, step1, -step2, -step2, -step1, -step1};
 
-                    if (arr[i][j] == 1 &&
-                        i + xes[k] < 8 && i + xes[k] >= 0 &&
-                        j + yes[k] < 8 && j + yes[k] >= 0) {
+        for (int i = 0; i < sideLen; i++) {
+            for (int j = 0; j < sideLen; j++) {
+                for (int k = 0; k < sideLen; k++) {
+
+                    if (arr[i][j] == 1
+                        && i + xes[k] < sideLen && i + xes[k] >= 0
+                        && j + yes[k] < sideLen && j + yes[k] >= 0) {
 
                         if (arr[i + xes[k]][j + yes[k]] == 1) {
                             return false;
