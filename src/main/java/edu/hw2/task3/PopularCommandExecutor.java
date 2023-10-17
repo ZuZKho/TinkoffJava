@@ -14,13 +14,11 @@ public class PopularCommandExecutor {
         this.maxAttempts = maxAttempts;
     }
 
-
-
     public void updatePackages() {
         tryExecute("apt update && apt upgrade -y");
     }
 
-    void tryExecute(String command) {
+    private void tryExecute(String command) {
         Connection connection = manager.getConnection();
 
         for (int i = 0; i < maxAttempts; i++) {
