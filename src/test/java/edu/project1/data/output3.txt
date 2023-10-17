@@ -1,0 +1,20 @@
+Guess a letter:
+Hit!
+
+The word: a***a
+
+Guess a letter:
+Hit!
+
+The word: ab*ba
+
+Guess a letter:
+Error: You have to enter small english letter or 'give up' phrase.
+Guess a letter:
+Error: You have to enter small english letter or 'give up' phrase.
+Guess a letter:
+Missed, mistake 0 out of 5.
+
+The word: ab*ba
+
+You lost!

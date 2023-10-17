@@ -1,0 +1,31 @@
+Guess a letter:
+Hit!
+
+The word: p*****
+
+Guess a letter:
+Hit!
+
+The word: p*t*t*
+
+Guess a letter:
+Hit!
+
+The word: p*tat*
+
+Guess a letter:
+Missed, mistake 1 out of 5.
+
+The word: p*tat*
+
+Guess a letter:
+Missed, mistake 2 out of 5.
+
+The word: p*tat*
+
+Guess a letter:
+Hit!
+
+The word: potato
+
+You won!
