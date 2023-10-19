@@ -3,7 +3,6 @@ package edu.hw2.task3;
 import edu.hw2.task3.connectionManagers.ConnectionManager;
 import edu.hw2.task3.connections.Connection;
 import edu.hw2.task3.connections.ConnectionException;
-import org.apache.logging.log4j.core.pattern.EqualsBaseReplacementConverter;
 import java.util.logging.Logger;
 
 public class PopularCommandExecutor {
@@ -21,6 +20,7 @@ public class PopularCommandExecutor {
     }
 
     private void tryExecute(String command) {
+        String closingError = "Error while closing connection!";
         Connection connection = manager.getConnection();
 
         for (int i = 0; i < maxAttempts; i++) {
@@ -33,7 +33,7 @@ public class PopularCommandExecutor {
                     try {
                         connection.close();
                     } catch (Exception ignored) {
-                        logger.info("Error while closing connection!");
+                        logger.info(closingError);
                     }
 
                     throw new ConnectionException(e.getCause());
@@ -44,7 +44,7 @@ public class PopularCommandExecutor {
         try {
             connection.close();
         } catch (Exception ignored) {
-            logger.info("Error while closing connection!");
+            logger.info(closingError);
         }
     }
 

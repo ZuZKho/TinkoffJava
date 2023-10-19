@@ -1,6 +1,6 @@
 package edu.hw2.task4;
 
-class Calling {
+final class Calling {
 
     private Calling() {
     }
