@@ -9,7 +9,6 @@ public class FaultyConnection implements Connection {
     Logger logger = Logger.getLogger("myLogger");
 
     public FaultyConnection() {
-
         logger.log(Level.INFO, "Connection established.");
     }
 
@@ -20,7 +19,7 @@ public class FaultyConnection implements Connection {
             throw new ConnectionException();
         }
 
-        logger.info("Command '" + command + "' was executed successfully.");
+        logger.info(String.format("Command '%s' was executed successfully.", command));
     }
 
     public void close() {

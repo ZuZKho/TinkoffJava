@@ -5,7 +5,7 @@ class Calling {
     private Calling() {
     }
 
-    static public CallingInfo callingInfo() {
+    public static CallingInfo callingInfo() {
 
         try {
             throw new Exception();

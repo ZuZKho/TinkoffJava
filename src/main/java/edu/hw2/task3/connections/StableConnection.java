@@ -11,7 +11,7 @@ public class StableConnection implements Connection {
     }
 
     public void execute(String command) {
-        logger.info("Command '" + command + "' was executed successfully");
+        logger.info(String.format("Command '%s' was executed successfully.", command));
     }
 
     public void close() {
