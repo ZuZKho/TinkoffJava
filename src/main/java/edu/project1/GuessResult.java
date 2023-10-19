@@ -15,11 +15,10 @@ public sealed interface GuessResult {
     @NotNull String message();
 
     private static String mistakeMessage(int attempt, int maxAttempts) {
-        return "Missed, mistake " + attempt + " out of " + maxAttempts + ".";
+        return String.format("Missed, mistake %d out of %d.", attempt, maxAttempts);
     }
 
     record Defeat(char[] state, int attempt, int maxAttempts) implements GuessResult {
-
         @NotNull public String message() {
             return mistakeMessage(attempt, maxAttempts);
         }
@@ -32,18 +31,14 @@ public sealed interface GuessResult {
     }
 
     record SuccessfulGuess(char[] state, int attempt, int maxAttempts) implements GuessResult {
-
         @NotNull public String message() {
             return HIT;
         }
     }
 
     record FailedGuess(char[] state, int attempt, int maxAttempts) implements GuessResult {
-
         @NotNull public String message() {
             return mistakeMessage(attempt, maxAttempts);
         }
     }
-
-
 }
