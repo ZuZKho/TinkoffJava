@@ -1,0 +1,31 @@
+Guess a letter:
+Hit!
+
+The word: ***a**
+
+Guess a letter:
+Missed, mistake 1 out of 5.
+
+The word: ***a**
+
+Guess a letter:
+Missed, mistake 2 out of 5.
+
+The word: ***a**
+
+Guess a letter:
+Missed, mistake 3 out of 5.
+
+The word: ***a**
+
+Guess a letter:
+Missed, mistake 4 out of 5.
+
+The word: ***a**
+
+Guess a letter:
+Missed, mistake 5 out of 5.
+
+The word: ***a**
+
+You lost!
