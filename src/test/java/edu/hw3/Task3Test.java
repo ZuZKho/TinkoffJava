@@ -9,11 +9,6 @@ import static edu.hw3.Task3.freqDict;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Task3Test {
-//
-//    freqDict(["a", "bb", "a", "bb"]) → {"bb": 2, "a": 2}
-//    freqDict(["this", "and", "that", "and"]) → {"that": 1, "and": 2, "this": 1}
-//    freqDict(["код", "код", "код", "bug"]) → {"код": 3, "bug": 1}
-//    freqDict([1, 1, 2, 2]) → {1: 2, 2: 2}
 
     @Test
     void freqDictTest1() {

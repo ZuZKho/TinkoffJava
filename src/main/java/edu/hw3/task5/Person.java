@@ -1,5 +1,7 @@
 package edu.hw3.task5;
 
+import java.util.Objects;
+
 public class Person {
 
     private final String firstName;
@@ -39,6 +41,6 @@ public class Person {
 
     @Override
     public int hashCode() {
-        return firstName.length() * 3 + lastName.length() * 5;
+        return Objects.hash(firstName, lastName);
     }
 }

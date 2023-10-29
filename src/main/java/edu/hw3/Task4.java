@@ -1,100 +1,62 @@
 package edu.hw3;
 
+import java.util.List;
+
 public class Task4 {
 
     private Task4() {
     }
 
     private static final int BASE = 10;
-    private static final int ONE = 1;
-    private static final int TWO = 2;
-    private static final int THREE = 3;
     private static final int FOUR = 4;
     private static final int FIVE = 5;
-    private static final int SIX = 6;
-    private static final int SEVEN = 7;
-    private static final int EIGHT = 8;
     private static final int NINE = 9;
+
+    private static final int MAXROMAN = 3999;
 
     private static String getDigit(int a, String one, String five, String ten) {
         String answer = "";
 
         switch (a) {
-            case ONE:
-                answer = one;
-                break;
-            case TWO:
-                answer = one + one;
-                break;
-            case THREE:
-                answer = one + one + one;
-                break;
             case FOUR:
                 answer = one + five;
-                break;
-            case FIVE:
-                answer = five;
-                break;
-            case SIX:
-                answer = five + one;
-                break;
-            case SEVEN:
-                answer = five + one + one;
-                break;
-            case EIGHT:
-                answer = five + one + one + one;
                 break;
             case NINE:
                 answer = one + ten;
                 break;
             default:
+                int cur = a;
+                if (cur >= FIVE) {
+                    answer = five;
+                    cur -= FIVE;
+                }
+                while (cur != 0) {
+                    answer = answer.concat(one);
+                    cur--;
+                }
                 break;
         }
+
         return answer;
     }
 
     public static String convertToRoman(int number) {
+        if (number > MAXROMAN) {
+            return null;
+        }
+
         String answer = "";
         int a = number;
+        List<String> ones = List.of("I", "X", "C", "M");
+        List<String> fives = List.of("V", "L", "D", "");
+        List<String> tens = List.of("X", "C", "M", "");
 
-        if (a > 0) {
-            int curNumber = a % BASE;
-            a /= BASE;
-            answer = getDigit(curNumber, "I", "V", "X");
-        }
-
-        if (a > 0) {
-            int curNumber = a % BASE;
-            a /= BASE;
-            answer = getDigit(curNumber, "X", "L", "C") + answer;
-        }
-
-        if (a > 0) {
-            int curNumber = a % BASE;
-            a /= BASE;
-            answer = getDigit(curNumber, "C", "D", "M") + answer;
-        }
-
-        if (a > 0) {
-            int curNumber = a % BASE;
-            a /= BASE;
-            switch (curNumber) {
-                case ONE:
-                    answer = "M" + answer;
-                    break;
-                case TWO:
-                    answer = "MM" + answer;
-                    break;
-                case THREE:
-                    answer = "MMM" + answer;
-                    break;
-                default:
-                    return null; // Слишком большое число
+        for (int i = 0; i < FOUR; i++) {
+            if (a > 0) {
+                int curNumber = a % BASE;
+                a /= BASE;
+                answer = getDigit(curNumber, ones.get(i), fives.get(i), tens.get(i)).concat(answer);
             }
-        }
-
-        if (a > 0) {
-            return null; // такое большое число нельзя записать римской записью
         }
 
         return answer;

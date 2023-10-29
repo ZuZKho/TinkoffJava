@@ -1,5 +1,7 @@
 package edu.hw3.task6;
 
+import java.util.Objects;
+
 public class Stock {
 
     private Stock() {
@@ -28,6 +30,6 @@ public class Stock {
 
     @Override
     public int hashCode() {
-        return this.price * 3 + this.name.length();
+        return Objects.hash(this.price, this.name);
     }
 }

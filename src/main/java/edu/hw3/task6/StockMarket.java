@@ -11,17 +11,14 @@ public class StockMarket implements StockMarketInterface {
         }
     });
 
-    /** Добавить акцию */
     public void add(Stock stock) {
         priorityQueue.add(stock);
     }
 
-    /** Удалить акцию */
     public void remove(Stock stock) {
         priorityQueue.remove(stock);
     }
 
-    /** Самая дорогая акция */
     public Stock mostValuableStock() {
         return priorityQueue.peek();
     }
