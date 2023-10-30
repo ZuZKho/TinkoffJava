@@ -1,5 +1,6 @@
 package edu.hw4;
 
+
 public record Animal(
     String name,
     Type type,
