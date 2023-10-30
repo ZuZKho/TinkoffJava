@@ -14,16 +14,17 @@ public record Animal(
         CAT, DOG, BIRD, FISH, SPIDER
     }
 
+
     enum Sex {
         M, F
     }
 
     public int paws() {
         return switch (type) {
-            case CAT, DOG -> 4;
+            case CAT, DOG -> 2 * 2;
             case BIRD -> 2;
             case FISH -> 0;
-            case SPIDER -> 8;
+            case SPIDER -> 2 * 2 * 2;
         };
     }
 }
