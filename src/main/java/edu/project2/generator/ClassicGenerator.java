@@ -3,6 +3,7 @@ package edu.project2.generator;
 import edu.project2.Cell;
 import edu.project2.Coordinate;
 import edu.project2.Maze;
+import edu.project2.Type;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -33,13 +34,13 @@ public class ClassicGenerator implements GeneratorInterface {
             }
 
             // Рандомим какую "стену" сломать
-            Random rnd = new Random();
-            int nextIdx = rnd.nextInt(neighbours.size());
+            Random randomGenerator = new Random();
+            int nextIdx = randomGenerator.nextInt(neighbours.size());
             Coordinate next = neighbours.get(nextIdx);
 
             // Ломаем стену
             field[(next.row() + current.row()) / 2][(next.col() + current.col()) / 2] =
-                new Cell((next.row() + current.row()) / 2, (next.col() + current.col()) / 2, Cell.Type.PASSAGE);
+                new Cell((next.row() + current.row()) / 2, (next.col() + current.col()) / 2, Type.PASSAGE);
 
             // Переходим в новую вершину
             visited.add(next);

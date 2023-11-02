@@ -3,6 +3,7 @@ package edu.project2.generator;
 import edu.project2.Cell;
 import edu.project2.Coordinate;
 import edu.project2.Maze;
+import edu.project2.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -28,8 +29,8 @@ public class KruskalGenerator implements GeneratorInterface {
             }
         }
 
-        Random rnd = new Random();
-        Collections.shuffle(edges, rnd);
+        Random randomGenerator = new Random();
+        Collections.shuffle(edges, randomGenerator);
 
         DSU<Coordinate> dsu = new DSU<>();
 
@@ -41,7 +42,7 @@ public class KruskalGenerator implements GeneratorInterface {
 
                 // Ломаем стену
                 field[(first.row() + second.row()) / 2][(first.col() + second.col()) / 2] =
-                    new Cell((first.row() + second.row()) / 2, (first.col() + second.col()) / 2, Cell.Type.PASSAGE);
+                    new Cell((first.row() + second.row()) / 2, (first.col() + second.col()) / 2, Type.PASSAGE);
             }
         }
 

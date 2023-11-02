@@ -3,38 +3,39 @@ package edu.project2.generator;
 import edu.project2.Cell;
 import edu.project2.Coordinate;
 import edu.project2.Maze;
+import edu.project2.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public interface GeneratorInterface {
 
-    int THREE = 3;
-    int FOUR = 4;
+    int MINCOORDINATE = 1;
+    int STEP = 2;
 
     default List<Coordinate> getNeighbours(int height, int width, HashSet<Coordinate> visited, Coordinate current) {
         List<Coordinate> neighbours = new ArrayList<>();
-        if (current.row() >= THREE) {
-            if (!visited.contains(new Coordinate(current.row() - 2, current.col()))) {
-                neighbours.add(new Coordinate(current.row() - 2, current.col()));
+        if (current.row() >= MINCOORDINATE + STEP) {
+            if (!visited.contains(new Coordinate(current.row() - STEP, current.col()))) {
+                neighbours.add(new Coordinate(current.row() - STEP, current.col()));
             }
         }
 
-        if (current.col() >= THREE) {
-            if (!visited.contains(new Coordinate(current.row(), current.col() - 2))) {
-                neighbours.add(new Coordinate(current.row(), current.col() - 2));
+        if (current.col() >= MINCOORDINATE + STEP) {
+            if (!visited.contains(new Coordinate(current.row(), current.col() - STEP))) {
+                neighbours.add(new Coordinate(current.row(), current.col() - STEP));
             }
         }
 
-        if (current.row() <= height - FOUR) {
-            if (!visited.contains(new Coordinate(current.row() + 2, current.col()))) {
-                neighbours.add(new Coordinate(current.row() + 2, current.col()));
+        if (current.row() <= height - 1 - MINCOORDINATE - STEP) {
+            if (!visited.contains(new Coordinate(current.row() + STEP, current.col()))) {
+                neighbours.add(new Coordinate(current.row() + STEP, current.col()));
             }
         }
 
-        if (current.col() <= width - FOUR) {
-            if (!visited.contains(new Coordinate(current.row(), current.col() + 2))) {
-                neighbours.add(new Coordinate(current.row(), current.col() + 2));
+        if (current.col() <= width - 1 - MINCOORDINATE - STEP) {
+            if (!visited.contains(new Coordinate(current.row(), current.col() + STEP))) {
+                neighbours.add(new Coordinate(current.row(), current.col() + STEP));
             }
         }
         return neighbours;
@@ -46,9 +47,9 @@ public interface GeneratorInterface {
         for (int i = 0; i < height; i += 1) {
             for (int j = 0; j < width; j += 1) {
                 if (i % 2 == 0 || j % 2 == 0) {
-                    field[i][j] = new Cell(i, j, Cell.Type.WALL);
+                    field[i][j] = new Cell(i, j, Type.WALL);
                 } else {
-                    field[i][j] = new Cell(i, j, Cell.Type.PASSAGE);
+                    field[i][j] = new Cell(i, j, Type.PASSAGE);
                 }
             }
         }

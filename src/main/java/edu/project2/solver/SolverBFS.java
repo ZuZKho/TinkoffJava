@@ -1,8 +1,8 @@
 package edu.project2.solver;
 
-import edu.project2.Cell;
 import edu.project2.Coordinate;
 import edu.project2.Maze;
+import edu.project2.Type;
 import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ public class SolverBFS implements SolverInterface {
         while (!queue.isEmpty()) {
             Coordinate current = queue.poll();
 
-            if (maze.getGrid()[current.row() + 1][current.col()].type() == Cell.Type.PASSAGE
+            if (maze.getGrid()[current.row() + 1][current.col()].type() == Type.PASSAGE
                 && !visited.contains(new Coordinate(current.row() + 1, current.col()))) {
                 Coordinate next = new Coordinate(current.row() + 1, current.col());
                 parent.put(next, current);
@@ -30,7 +30,7 @@ public class SolverBFS implements SolverInterface {
                 queue.add(next);
             }
 
-            if (maze.getGrid()[current.row() - 1][current.col()].type() == Cell.Type.PASSAGE
+            if (maze.getGrid()[current.row() - 1][current.col()].type() == Type.PASSAGE
                 && !visited.contains(new Coordinate(current.row() - 1, current.col()))) {
                 Coordinate next = new Coordinate(current.row() - 1, current.col());
                 parent.put(next, current);
@@ -38,7 +38,7 @@ public class SolverBFS implements SolverInterface {
                 queue.add(next);
             }
 
-            if (maze.getGrid()[current.row()][current.col() + 1].type() == Cell.Type.PASSAGE
+            if (maze.getGrid()[current.row()][current.col() + 1].type() == Type.PASSAGE
                 && !visited.contains(new Coordinate(current.row(), current.col() + 1))) {
                 Coordinate next = new Coordinate(current.row(), current.col() + 1);
                 parent.put(next, current);
@@ -46,7 +46,7 @@ public class SolverBFS implements SolverInterface {
                 queue.add(next);
             }
 
-            if (maze.getGrid()[current.row()][current.col() - 1].type() == Cell.Type.PASSAGE
+            if (maze.getGrid()[current.row()][current.col() - 1].type() == Type.PASSAGE
                 && !visited.contains(new Coordinate(current.row(), current.col() - 1))) {
                 Coordinate next = new Coordinate(current.row(), current.col() - 1);
                 parent.put(next, current);

@@ -33,19 +33,19 @@ public class Tests {
         for (int i = 0; i < height; i += 1) {
             for (int j = 0; j < width; j += 1) {
                 if (i % 2 == 0 || j % 2 == 0) {
-                    field[i][j] = new Cell(i, j, Cell.Type.WALL);
-                    fieldNoPath[i][j] = new Cell(i, j, Cell.Type.WALL);
+                    field[i][j] = new Cell(i, j, Type.WALL);
+                    fieldNoPath[i][j] = new Cell(i, j, Type.WALL);
                 } else {
-                    field[i][j] = new Cell(i, j, Cell.Type.PASSAGE);
-                    fieldNoPath[i][j] = new Cell(i, j, Cell.Type.WALL);
+                    field[i][j] = new Cell(i, j, Type.PASSAGE);
+                    fieldNoPath[i][j] = new Cell(i, j, Type.WALL);
                 }
             }
         }
-        field[1][2] = new Cell(1, 2, Cell.Type.PASSAGE);
-        field[2][1] = new Cell(2, 1, Cell.Type.PASSAGE);
-        field[2][3] = new Cell(2, 3, Cell.Type.PASSAGE);
-        fieldNoPath[1][2] = new Cell(1, 2, Cell.Type.PASSAGE);
-        fieldNoPath[2][1] = new Cell(2, 1, Cell.Type.PASSAGE);
+        field[1][2] = new Cell(1, 2, Type.PASSAGE);
+        field[2][1] = new Cell(2, 1, Type.PASSAGE);
+        field[2][3] = new Cell(2, 3, Type.PASSAGE);
+        fieldNoPath[1][2] = new Cell(1, 2, Type.PASSAGE);
+        fieldNoPath[2][1] = new Cell(2, 1, Type.PASSAGE);
 
 
         path.add(new Coordinate(1, 1));
@@ -150,7 +150,7 @@ public class Tests {
             int nexti = i + movements.get(k).row();
             int nextj = j + movements.get(k).col();
 
-            if (maze.getGrid()[nexti][nextj].type() == Cell.Type.PASSAGE) {
+            if (maze.getGrid()[nexti][nextj].type() == Type.PASSAGE) {
                 if (!visited.containsKey(new Coordinate(nexti, nextj))) {
                     boolean res = dfs(maze, visited, nexti, nextj, i, j);
                     if (!res) return false;

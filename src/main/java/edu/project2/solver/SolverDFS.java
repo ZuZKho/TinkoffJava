@@ -1,8 +1,8 @@
 package edu.project2.solver;
 
-import edu.project2.Cell;
 import edu.project2.Coordinate;
 import edu.project2.Maze;
+import edu.project2.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -18,28 +18,28 @@ public class SolverDFS implements SolverInterface {
         visited.add(current);
 
         // проходимся по соседям
-        if (maze.getGrid()[current.row() + 1][current.col()].type() == Cell.Type.PASSAGE
+        if (maze.getGrid()[current.row() + 1][current.col()].type() == Type.PASSAGE
             && !visited.contains(new Coordinate(current.row() + 1, current.col()))) {
             Coordinate next = new Coordinate(current.row() + 1, current.col());
             parent.put(next, current);
             dfs(maze, next, end);
         }
 
-        if (maze.getGrid()[current.row() - 1][current.col()].type() == Cell.Type.PASSAGE
+        if (maze.getGrid()[current.row() - 1][current.col()].type() == Type.PASSAGE
             && !visited.contains(new Coordinate(current.row() - 1, current.col()))) {
             Coordinate next = new Coordinate(current.row() - 1, current.col());
             parent.put(next, current);
             dfs(maze, next, end);
         }
 
-        if (maze.getGrid()[current.row()][current.col() + 1].type() == Cell.Type.PASSAGE
+        if (maze.getGrid()[current.row()][current.col() + 1].type() == Type.PASSAGE
             && !visited.contains(new Coordinate(current.row(), current.col() + 1))) {
             Coordinate next = new Coordinate(current.row(), current.col() + 1);
             parent.put(next, current);
             dfs(maze, next, end);
         }
 
-        if (maze.getGrid()[current.row()][current.col() - 1].type() == Cell.Type.PASSAGE
+        if (maze.getGrid()[current.row()][current.col() - 1].type() == Type.PASSAGE
             && !visited.contains(new Coordinate(current.row(), current.col() - 1))) {
             Coordinate next = new Coordinate(current.row(), current.col() - 1);
             parent.put(next, current);

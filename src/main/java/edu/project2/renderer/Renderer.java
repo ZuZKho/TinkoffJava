@@ -1,8 +1,9 @@
 package edu.project2.renderer;
 
-import edu.project2.Cell;
+
 import edu.project2.Coordinate;
 import edu.project2.Maze;
+import edu.project2.Type;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +15,7 @@ public class Renderer implements RendererInterface {
         List<Character> list = new ArrayList<>();
         for (int i = 0; i < maze.getHeight(); i += 1) {
             for (int j = 0; j < maze.getWidth(); j += 1) {
-                if (maze.getGrid()[i][j].type() == Cell.Type.PASSAGE) {
+                if (maze.getGrid()[i][j].type() == Type.PASSAGE) {
                     if (onPath.contains(new Coordinate(i, j))) {
                         list.add(' ');
                         list.add('X');
