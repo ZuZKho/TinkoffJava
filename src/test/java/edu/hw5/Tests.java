@@ -36,10 +36,13 @@ public class Tests {
     @Test
     @DisplayName("Task1 test2")
     void task1test2() {
+        // Arrange
         List<String> log = new ArrayList<>();
 
+        // Act
         Duration actual = getDuration(log);
 
+        // Assert
         assertNull(actual);
     }
 

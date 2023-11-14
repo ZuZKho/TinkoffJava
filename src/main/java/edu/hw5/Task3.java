@@ -10,8 +10,6 @@ public class Task3 {
     private Task3() {
     }
 
-    private static final int THREE = 3;
-
     static private DateProcessor getChain() {
         DateProcessor processor = new AgoProcessor(null);
         processor = new DashProcessor(processor);
@@ -83,6 +81,7 @@ public class Task3 {
         }
     }
 
+    @SuppressWarnings("MagicNumber")
     static class DashProcessor extends DateProcessor {
         DashProcessor(DateProcessor nextProcessor) {
             super(nextProcessor);
@@ -96,13 +95,12 @@ public class Task3 {
             if (matcher.find()) {
                 int year = Integer.parseInt(matcher.group(1));
                 int month = Integer.parseInt(matcher.group(2));
-                int day = Integer.parseInt(matcher.group(THREE));
+                int day = Integer.parseInt(matcher.group(3));
 
                 try {
                     return LocalDate.of(year, month, day);
                 } catch (Exception ignored) {
-                    // Обертка над LocalDate.of, чтобы в случае
-                    // невалидной даты программа не упала
+                    return nextProcessor == null ? null : nextProcessor.parse(string);
                 }
             }
 
@@ -110,6 +108,7 @@ public class Task3 {
         }
     }
 
+    @SuppressWarnings("MagicNumber")
     static class SlashProcessor extends DateProcessor {
         SlashProcessor(DateProcessor nextProcessor) {
             super(nextProcessor);
@@ -123,13 +122,12 @@ public class Task3 {
             if (matcher.find()) {
                 int day = Integer.parseInt(matcher.group(1));
                 int month = Integer.parseInt(matcher.group(2));
-                int year = Integer.parseInt(matcher.group(THREE));
+                int year = Integer.parseInt(matcher.group(3));
 
                 try {
                     return LocalDate.of(year, month, day);
                 } catch (Exception ignored) {
-                    // Обертка над LocalDate.of, чтобы в случае
-                    // невалидной даты программа не упала
+                    return nextProcessor == null ? null : nextProcessor.parse(string);
                 }
             }
 
