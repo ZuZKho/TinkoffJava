@@ -11,7 +11,9 @@ public class AdocTableRenderer implements TableRenderer {
             String value = row[i].toString();
             stringBuilder.append("| ");
             stringBuilder.append(value);
-            stringBuilder.append(" ");
+            if (i != row.length - 1) {
+                stringBuilder.append(" ");
+            }
         }
         stringBuilder.append("\n");
         stringBuilder.append("\n");

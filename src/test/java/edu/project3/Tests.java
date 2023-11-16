@@ -82,4 +82,24 @@ public class Tests {
             assertEquals(file1, file2);
         });
     }
+
+    @Test
+    void mainTest() {
+        String[] args = new String[]{"--path", "test.txt", "--format", "adoc", "--to", "2015-05-14"};
+
+        Main.main(args);
+
+        assertDoesNotThrow(() -> {
+            // Act 2
+            byte[] file1Bytes = Files.readAllBytes(Paths.get("src/main/resources/project3/test3expected.adoc"));
+            byte[] file2Bytes = Files.readAllBytes(Paths.get("src/main/resources/project3/result.adoc"));
+            String file1 = new String(file1Bytes, StandardCharsets.UTF_8);
+            String file2 = new String(file2Bytes, StandardCharsets.UTF_8);
+            file2 = file2.replaceAll("\r", "");
+            file1 = file1.replaceAll("\r", "");
+
+            // Assert 2
+            assertEquals(file1, file2);
+        });
+    }
 }
