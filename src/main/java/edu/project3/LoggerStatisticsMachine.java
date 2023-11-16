@@ -39,7 +39,6 @@ public class LoggerStatisticsMachine {
         this.bytesCount = 0;
     }
 
-    @SuppressWarnings("MagicNumber")
     public void addLogs(List<LogRecord> logRecords) throws IllegalArgumentException {
         for (var log : logRecords) {
 
@@ -64,11 +63,11 @@ public class LoggerStatisticsMachine {
 
             userAgentsCount.merge(log.httpsUserAgent(), 1, Integer::sum);
 
-            LocalDate odt = LocalDate.of(log.localTime().getYear(),
+            LocalDate localDate = LocalDate.of(log.localTime().getYear(),
                 log.localTime().getMonthValue(),
                 log.localTime().getDayOfMonth()
             );
-            dayMonthRequestsCount.merge(odt, 1, Integer::sum);
+            dayMonthRequestsCount.merge(localDate, 1, Integer::sum);
         }
     }
 
