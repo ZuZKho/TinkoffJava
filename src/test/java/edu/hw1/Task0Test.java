@@ -10,11 +10,12 @@ class Task0Test {
     @Test
     void application_writes_mutliple_lines_to_System_err(
     ) throws Exception {
-        String text = tapSystemErrNormalized(() -> {
-            Task0.task0();
-        });
+        String text = tapSystemErrNormalized(Task0::task0);
 
         String lines[] = text.split("\n");
+        if (lines.length <= 1) {
+            throw new Exception(lines[0]);
+        }
         assertEquals(lines[1], "INFO: Hello, world!");
     }
 }
