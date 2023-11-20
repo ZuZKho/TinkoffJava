@@ -13,8 +13,8 @@ class Task0Test {
         String text = tapSystemErrNormalized(Task0::task0);
 
         String[] lines = text.split("\n");
-        if (lines.length > 1) {
+
             assertEquals(lines[1], "INFO: Hello, world!");
-        }
+
     }
 }
