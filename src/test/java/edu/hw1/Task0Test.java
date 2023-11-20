@@ -14,7 +14,6 @@ class Task0Test {
 
         String[] lines = text.split("\n");
 
-            assertEquals(lines[1], "INFO: Hello, world!");
-
+        assertEquals(lines[1], "INFO: Hello, world!");
     }
 }
