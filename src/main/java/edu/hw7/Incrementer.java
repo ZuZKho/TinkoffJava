@@ -27,6 +27,7 @@ public class Incrementer {
                     atomicInteger.incrementAndGet();
                 }
             });
+
             threads[i].start();
         }
 
