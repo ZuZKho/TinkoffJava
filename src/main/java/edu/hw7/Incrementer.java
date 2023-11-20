@@ -35,7 +35,7 @@ public class Incrementer {
                 threads[i].join();
             }
         } catch (InterruptedException e) {
-            Logger.getLogger("logger").info("Error while multithreading");
+           // Logger.getLogger("logger").info("Error while multithreading");
         }
     }
 
