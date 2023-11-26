@@ -53,6 +53,7 @@ public class Hw7Tests {
     @DisplayName("One thread")
     void piTest1() {
         PiNumberFinder piNumberFinder = new PiNumberFinder();
+
         for (int i = 0; i < 10; i++) {
             assertTrue(Math.abs(Math.PI - piNumberFinder.calculatePiNumber(100000)) <= 0.05);
         }
@@ -62,6 +63,7 @@ public class Hw7Tests {
     @DisplayName("Multithread")
     void piTest2() {
         PiNumberFinder piNumberFinder = new PiNumberFinder();
+
         for (int i = 0; i < 10; i++) {
             assertTrue(Math.abs(Math.PI - piNumberFinder.multithreadCalculatePiNumber(5, 100000)) <= 0.05);
         }
@@ -71,7 +73,6 @@ public class Hw7Tests {
     @DisplayName("piFinder statistics")
     @Disabled
     void piTestStatistics() {
-
         PiNumberFinder piNumberFinder = new PiNumberFinder();
         List<Integer> pointsCount = Arrays.asList(100, 10000, 1000000, 10000000);
         List<Integer> threadsCount = Arrays.asList(1, 2, 3, 5, 10);
