@@ -21,15 +21,17 @@ import java.util.stream.Stream;
 public class LoggerStatisticsMachine {
 
     private final String fileName;
-    private OffsetDateTime startDate;
+    private final OffsetDateTime startDate;
     private final OffsetDateTime endDate;
-    long queriesCount;
-    long bytesCount;
+    private long queriesCount;
+    private long bytesCount;
     private final HashMap<Integer, Integer> statusCodes = new HashMap<>();
     private final HashMap<String, Integer> resourcesCount = new HashMap<>();
     private final HashMap<String, Integer> requestMethodsCount = new HashMap<>();
     private final HashMap<String, Integer> userAgentsCount = new HashMap<>();
     private final HashMap<LocalDate, Integer> dayMonthRequestsCount = new HashMap<>();
+    private String header;
+    private List<Object[]> table;
 
     public LoggerStatisticsMachine(String fileName, OffsetDateTime startDate, OffsetDateTime endDate) {
         this.fileName = fileName;
@@ -70,9 +72,6 @@ public class LoggerStatisticsMachine {
             dayMonthRequestsCount.merge(localDate, 1, Integer::sum);
         }
     }
-
-    private String header;
-    private List<Object[]> table;
 
     private void renderDayMonthStatistics(TableRenderer tableRenderer, FileWriter writer) throws IOException {
         header = "Даты запросов";

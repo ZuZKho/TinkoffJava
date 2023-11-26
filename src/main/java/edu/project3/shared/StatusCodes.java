@@ -1,31 +1,19 @@
 package edu.project3.shared;
 
-import java.util.HashMap;
-
 public final class StatusCodes {
 
     private StatusCodes() {
     }
 
-    static HashMap<Integer, String> codes = new HashMap<Integer, String>();
-
-    @SuppressWarnings("MagicNumber")
-    private static void fillCodes() {
-        codes.put(200, "OK");
-        codes.put(304, "Not Modified");
-        codes.put(404, "Not found");
-    }
-
     public static String getCode(Integer code) {
-        if (codes.isEmpty()) {
-            fillCodes();
-        }
+        StatusCode statusCode = StatusCode.fromInteger(code);
 
-        if (codes.get(code) != null) {
-            return codes.get(code);
-        } else {
-            return "-";
-        }
+        return switch (statusCode) {
+            case OK -> "OK";
+            case NOT_MODIFIED -> "Not Modified";
+            case NOT_FOUND -> "Not found";
+            default -> "-";
+        };
     }
 
 }

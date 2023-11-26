@@ -29,7 +29,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @SuppressWarnings("MultipleStringLiterals")
 public class Main {
@@ -151,15 +150,15 @@ public class Main {
             }
 
         } catch (FileNotFoundException exception) {
-            Logger.getLogger("logger").log(Level.INFO, "Can't find file");
+            MyLogger.log(Level.INFO, "Can't find file");
         } catch (IOException e) {
-            Logger.getLogger("logger").log(Level.INFO, "Error while IO work");
+            MyLogger.log(Level.INFO, "Error while IO work");
         } catch (IllegalArgumentException e) {
-            Logger.getLogger("logger").log(Level.INFO, String.format("Can't parse: %s", e.getMessage()));
+            MyLogger.log(Level.INFO, String.format("Can't parse: %s", e.getMessage()));
         } catch (URISyntaxException e) {
-            Logger.getLogger("logger").log(Level.INFO, "Wrong http link");
+            MyLogger.log(Level.INFO, "Wrong http link");
         } catch (InterruptedException e) {
-            Logger.getLogger("logger").log(Level.INFO, "Http connection error");
+            MyLogger.log(Level.INFO, "Http connection error");
         }
     }
 }
