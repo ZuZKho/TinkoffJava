@@ -1,9 +1,8 @@
 package edu.hw7;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import lombok.extern.java.Log;
+import java.util.logging.Logger;
 
-@Log
 public class Incrementer {
 
     private final AtomicInteger atomicInteger;
@@ -37,7 +36,7 @@ public class Incrementer {
                 threads[i].join();
             }
         } catch (InterruptedException e) {
-            log.info("Error while multithreading");
+            Logger.getLogger("logger").info("Error while multithreading");
         }
     }
 
