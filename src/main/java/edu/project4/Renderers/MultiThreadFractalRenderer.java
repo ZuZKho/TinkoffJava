@@ -36,7 +36,7 @@ public class MultiThreadFractalRenderer implements FractalRenderer {
         );
 
         for (int step = -20; step < iterPerSample; ++step) {
-            double[] cur = coeffs.get(ThreadLocalRandom.current().nextInt(coeffsCount));
+            double[] cur = coeffs.get(ThreadLocalRandom.current().nextInt(COEFFS_COUNT));
             point = new Point(
                 point.x() * cur[0] + point.y() * cur[1] + cur[2],
                 point.x() * cur[3] + point.y() * cur[4] + cur[5]
