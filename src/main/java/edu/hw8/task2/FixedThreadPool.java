@@ -62,7 +62,6 @@ public class FixedThreadPool implements ThreadPool {
                 synchronized (queue) {
                     queue.wait();
                 }
-                //  Thread.sleep(1000);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
