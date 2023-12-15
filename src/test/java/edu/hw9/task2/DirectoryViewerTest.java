@@ -14,10 +14,10 @@ class DirectoryViewerTest {
     @Test
     void directoriesFindTest1() {
         List<File> expected = new ArrayList<>();
-        expected.add(new File(".\\src\\main\\resources\\hw9"));
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2"));
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\test5"));
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\test5\\hello"));
+        expected.add(new File("./src/main/resources/hw9"));
+        expected.add(new File("./src/main/resources/hw9/test2"));
+        expected.add(new File("./src/main/resources/hw9/test2/test5"));
+        expected.add(new File("./src/main/resources/hw9/test2/test5/hello"));
 
         var ans = directoryViewer.bigDirectories("./src/main/resources/hw9", 1);
 
@@ -30,8 +30,8 @@ class DirectoryViewerTest {
     @Test
     void directoriesFindTest2() {
         List<File> expected = new ArrayList<>();
-        expected.add(new File(".\\src\\main\\resources\\hw9"));
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\test5"));
+        expected.add(new File("./src/main/resources/hw9"));
+        expected.add(new File("./src/main/resources/hw9/test2/test5"));
 
         var ans = directoryViewer.bigDirectories("./src/main/resources/hw9", 2);
 
@@ -51,8 +51,8 @@ class DirectoryViewerTest {
     @Test
     void filesFindTest1() {
         List<File> expected = new ArrayList<>();
-        expected.add(new File(".\\src\\main\\resources\\hw9\\python.py"));
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\python2.py"));
+        expected.add(new File("./src/main/resources/hw9/python.py"));
+        expected.add(new File("./src/main/resources/hw9/test2/python2.py"));
 
         var ans =
             directoryViewer.filesByPredicate("./src/main/resources/hw9", (File file) -> file.getName().endsWith(".py"));
@@ -63,8 +63,8 @@ class DirectoryViewerTest {
     @Test
     void filesFindTest2() {
         List<File> expected = new ArrayList<>();
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\test5\\file10.txt"));
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\test5\\hello\\world.txt"));
+        expected.add(new File("./src/main/resources/hw9/test2/test5/file10.txt"));
+        expected.add(new File("./src/main/resources/hw9/test2/test5/hello/world.txt"));
 
         var ans = directoryViewer.filesByPredicate("./src/main/resources/hw9", (File file) -> (file.length() > 1));
 
@@ -74,7 +74,7 @@ class DirectoryViewerTest {
     @Test
     void filesFindTest3() {
         List<File> expected = new ArrayList<>();
-        expected.add(new File(".\\src\\main\\resources\\hw9\\test2\\test5\\file10.txt"));
+        expected.add(new File("./src/main/resources/hw9/test2/test5/file10.txt"));
 
         var ans = directoryViewer.filesByPredicate("./src/main/resources/hw9", (File file) -> (file.length() > 10));
 
