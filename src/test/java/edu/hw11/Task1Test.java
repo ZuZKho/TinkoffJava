@@ -6,9 +6,6 @@ import net.bytebuddy.dynamic.loading.ClassLoadingStrategy;
 import net.bytebuddy.dynamic.loading.ClassReloadingStrategy;
 import net.bytebuddy.implementation.FixedValue;
 import net.bytebuddy.implementation.MethodDelegation;
-import net.bytebuddy.implementation.bytecode.ByteCodeAppender;
-import net.bytebuddy.jar.asm.MethodVisitor;
-import net.bytebuddy.jar.asm.Opcodes;
 import org.junit.jupiter.api.Test;
 import static net.bytebuddy.matcher.ElementMatchers.named;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -57,17 +54,16 @@ public class Task1Test {
         assertEquals(arithmeticUtils.sum(2, 3), 6);
     }
 
-
-    @Test
-    void task3test() {
-
-        MethodVisitor mv = new MethodVisitor();
-        mv.visitVarInsn(Opcodes.ILOAD,1);
-        mv.visitJumpInsn(Opcodes.IFEQ,...);
-
-        mv.visitInsn(Opcodes.LRETURN);
-
-
-
-    }
+//    @Test
+//    void task3test() {
+//
+//        MethodVisitor mv = new MethodVisitor();
+//        mv.visitVarInsn(Opcodes.ILOAD,1);
+//        mv.visitJumpInsn(Opcodes.IFEQ,...);
+//
+//        mv.visitInsn(Opcodes.LRETURN);
+//
+//
+//
+//    }
 }
