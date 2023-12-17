@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import static net.bytebuddy.matcher.ElementMatchers.named;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Task1Test {
+public class MyTest {
 
     @Test
     public void task1test() throws Exception {
